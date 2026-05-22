@@ -1,30 +1,30 @@
 Kapitel 6 - DAO
 Pflichtaufgaben: 6.1 - 6.2
 
-6.1 Ergaenze die Klasse Dao_room um die Methoden update und delete.
+6.1 Ergänze die Klasse Dao_room um die Methoden update und delete.
 
 Python-Dateien:
 - room.py
 - dao_room.py
 - room_main.py
 
-Erklaerung:
+Erklärung:
 create speichert ein neues Room-Objekt.
 read liest alle Raum-Documents und wandelt sie wieder in Room-Objekte um.
 update sucht einen Raum anhand der ID und aktualisiert die Attribute.
-delete loescht einen Raum anhand der ID.
+delete löscht einen Raum anhand der ID.
 
 6.2 Erstelle eine Datenbank, in welcher Jokes gespeichert werden.
 
-Die Klasse Joke enthaelt diese Attribute:
+Die Klasse Joke enthält diese Attribute:
 - text: Text des Jokes
 - category: Liste von Kategorien
 - author: Verfasser des Jokes
 
-Die DAO-Klasse enthaelt diese Methoden:
+Die DAO-Klasse enthält diese Methoden:
 - insert: speichert einen neuen Witz
-- get_category: gibt alle Witze einer Kategorie zurueck
-- delete: loescht einen Witz anhand der ID
+- get_category: gibt alle Witze einer Kategorie zurück
+- delete: löscht einen Witz anhand der ID
 
 Python-Dateien:
 - joke.py

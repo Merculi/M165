@@ -1,38 +1,38 @@
 Kapitel 1 - Setup
 Pflichtaufgaben: 1.1 - 1.2
 
-1.1 Erklaere die Abkuerzung ODM und welche Funktion ODM wahrnimmt.
+1.1 Erkläre die Abkürzung ODM und welche Funktion ODM wahrnimmt.
 
-ODM steht fuer Object-Document Mapper.
+ODM steht für Object-Document Mapper.
 
 Ein ODM verbindet die objektorientierte Programmierung mit einer dokumentenorientierten Datenbank wie MongoDB.
 In der Applikation arbeitet man mit Klassen und Objekten. In MongoDB werden diese Daten als Documents
-gespeichert. Der ODM uebernimmt die Uebersetzung zwischen Objekt und Document.
+gespeichert. Der ODM übernimmt die Übersetzung zwischen Objekt und Document.
 
 Beispiel:
 - In Python existiert ein Objekt der Klasse User.
-- In MongoDB wird dieses Objekt als JSON-aehnliches Document gespeichert.
+- In MongoDB wird dieses Objekt als JSON-ähnliches Document gespeichert.
 - Beim Lesen aus der Datenbank kann daraus wieder ein Python-Objekt erstellt werden.
 
 Ein ODM vereinfacht dadurch:
 - Speichern von Objekten in der Datenbank
 - Lesen von Documents als Objekte
-- Aendern und Loeschen von Daten
+- Ändern und Löschen von Daten
 - Validieren von Datenstrukturen
 - Trennung zwischen Datenbanklogik und Fachlogik
 
-1.2 Richte dein System so ein, dass du ueber Python oder C# eine Verbindung zur Datenbank herstellen kannst.
+1.2 Richte dein System so ein, dass du über Python oder C# eine Verbindung zur Datenbank herstellen kannst.
 Erstelle dazu ein kleines Testprogramm.
 
-Ich waehle Python.
+Ich wähle Python.
 
-Installation der benoetigten Library:
+Installation der benötigten Library:
 pip install pymongo
 
 Das Testprogramm befindet sich in:
 test_connection.py
 
-Erklaerung:
+Erklärung:
 Das Programm erstellt mit MongoClient eine Verbindung zum lokalen MongoDB-Server.
 Mit dem Befehl ping wird getestet, ob der Server erreichbar ist.
 Wenn keine Fehlermeldung erscheint, funktioniert die Verbindung.
