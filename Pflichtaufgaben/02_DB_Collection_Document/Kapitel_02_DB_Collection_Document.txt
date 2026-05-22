@@ -1,0 +1,36 @@
+Kapitel 2 - DB, Collection, Document
+Pflichtaufgaben: 2.1 - 2.4
+
+Auftrag:
+Erstelle eine Applikation, die als Datenbank-, Collection- und Document-Explorer funktioniert.
+
+Die Pflichtaufgaben 2.1 bis 2.4 verlangen:
+- Datenbanken anzeigen
+- Datenbank auswaehlen
+- Collections der Datenbank anzeigen
+- Collection auswaehlen
+- IDs der Documents anzeigen
+- Document anhand der ID auswaehlen und Inhalt anzeigen
+
+Die Python-Applikation befindet sich in:
+db_collection_document_explorer.py
+
+Erklaerung zu den Pflichtaufgaben:
+
+2.1
+Beim Start werden mit client.list_database_names() alle Datenbanken ausgelesen und als Liste angezeigt.
+
+2.2
+Nach der Eingabe eines Datenbanknamens wird client[database_name] verwendet.
+Danach werden mit db.list_collection_names() alle Collections dieser Datenbank angezeigt.
+
+2.3
+Nach der Eingabe einer Collection werden mit find({}, {"_id": 1}) nur die IDs der Documents geladen.
+Das zweite Argument sorgt dafuer, dass nur das Feld _id angezeigt wird.
+
+2.4
+Die eingegebene ID wird mit ObjectId(document_id) in eine MongoDB-ID umgewandelt.
+Mit find_one({"_id": ObjectId(document_id)}) wird das passende Document gelesen und ausgegeben.
+
+Hinweis:
+Die Aufgaben 2.5 bis 2.7 sind laut Leitfaden optional und wurden hier nicht geloest.

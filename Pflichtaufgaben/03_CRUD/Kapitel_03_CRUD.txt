@@ -1,0 +1,79 @@
+Kapitel 3 - CRUD
+Pflichtaufgaben: 3.1 - 3.4
+
+Die Aufgaben beziehen sich auf die importierte Restaurant-Datenbank.
+Ich gehe davon aus, dass die Datenbank restaurants heisst und die Collection restaurants heisst.
+Falls deine Datenbank anders heisst, kann der Datenbankname in den Python-Dateien angepasst werden.
+
+3.1 Die Restaurants befinden sich in Stadtbezirken. Alle Stadtbezirke sollen ausgegeben werden, jedoch nicht doppelt.
+
+Python-Datei:
+aufgabe_03_1_boroughs.py
+
+Mongosh:
+db.restaurants.distinct("borough")
+
+Erklaerung:
+distinct("borough") liest alle unterschiedlichen Werte des Felds borough.
+Doppelte Stadtbezirke werden automatisch entfernt.
+
+3.2 Es sollen die Top 3 Restaurants ausgegeben werden, welche im Durchschnitt das hoechste Rating score haben.
+
+Python-Datei:
+aufgabe_03_2_top3.py
+
+Mongosh:
+db.restaurants.aggregate([
+  { $unwind: "$grades" },
+  {
+    $group: {
+      _id: "$_id",
+      name: { $first: "$name" },
+      borough: { $first: "$borough" },
+      avg_score: { $avg: "$grades.score" }
+    }
+  },
+  { $sort: { avg_score: -1 } },
+  { $limit: 3 }
+])
+
+Erklaerung:
+$unwind teilt die Bewertungen in einzelne Eintraege auf.
+$group gruppiert wieder nach Restaurant und berechnet mit $avg den Durchschnitt.
+$sort sortiert absteigend, $limit gibt nur die besten drei Restaurants aus.
+
+3.3 Finde das Restaurant, welches geografisch am naechsten zum Restaurant mit dem Namen Le Perigord liegt.
+
+Python-Datei:
+aufgabe_03_3_nearest_le_perigord.py
+
+Mongosh:
+db.restaurants.createIndex({ "address.coord": "2d" })
+
+const lePerigord = db.restaurants.findOne({ name: "Le Perigord" })
+
+db.restaurants.find({
+  name: { $ne: "Le Perigord" },
+  "address.coord": { $near: lePerigord.address.coord }
+}).limit(1)
+
+Erklaerung:
+Zuerst wird das Restaurant Le Perigord gesucht.
+Danach wird mit $near das naechstgelegene Restaurant anhand der Koordinaten gesucht.
+Das Restaurant Le Perigord selbst wird mit $ne ausgeschlossen.
+
+3.4 Erstelle eine Applikation, mit welcher ein Restaurant gesucht werden kann.
+Es soll nach den Attributen Name und Kueche gesucht werden koennen.
+Leere Suchfelder werden ignoriert.
+Teilweise uebereinstimmende Suchbegriffe sollen auch Treffer liefern.
+
+Python-Datei:
+aufgabe_03_4_restaurant_search.py
+
+Erklaerung:
+Die Query wird nur mit Feldern gefuellt, bei denen der User etwas eingibt.
+$regex erlaubt Teilsuchen.
+$options: "i" sorgt dafuer, dass Gross- und Kleinschreibung ignoriert wird.
+
+Hinweis:
+Aufgabe 3.5 ist laut Leitfaden optional und wurde hier nicht geloest.

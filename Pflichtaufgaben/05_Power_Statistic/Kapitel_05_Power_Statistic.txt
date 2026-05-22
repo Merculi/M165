@@ -1,0 +1,42 @@
+Kapitel 5 - Power Statistic
+Pflichtaufgaben: 5.1 - 5.4
+
+5.1 Erstelle eine Klasse Power mit diesen Attributen:
+- CPU in Prozent
+- RAM total
+- RAM in Verwendung
+- Zeitstempel
+
+Zeitstempel und Messwerte sollen nur erstellt werden, wenn dem Konstruktor keine Werte uebergeben werden.
+
+Python-Datei:
+power.py
+
+5.2 Die aktuelle Auslastung von CPU und RAM wird im Sekundentakt in der Datenbank abgespeichert.
+
+Python-Datei:
+power_logger.py
+
+5.3 Die Applikation soll dafuer sorgen, dass nicht mehr als 10000 Logs vorhanden sind.
+Sobald mehr als 10000 Logs gespeichert sind, werden die aeltesten Logs geloescht.
+
+Umsetzung:
+Diese Funktion ist ebenfalls in power_logger.py enthalten.
+
+Erklaerung:
+Die Logs werden nach timestamp aufsteigend sortiert.
+Dadurch stehen die aeltesten Eintraege zuerst.
+Wenn mehr als 10000 Eintraege existieren, werden genau die zu vielen alten Eintraege geloescht.
+
+5.4 Erstelle eine zusaetzliche Applikation, welche die Daten in einem Graph anzeigt.
+
+Installation:
+pip install matplotlib
+
+Python-Datei:
+power_plot.py
+
+Erklaerung:
+Die gespeicherten Messwerte werden aus MongoDB gelesen und nach Zeit sortiert.
+CPU wird direkt als Prozentwert angezeigt.
+RAM wird aus ram_used und ram_total ebenfalls in Prozent umgerechnet.
