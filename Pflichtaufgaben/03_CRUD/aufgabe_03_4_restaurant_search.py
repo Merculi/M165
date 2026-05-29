@@ -5,7 +5,7 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["restaurants"]
 
 name = input("Name: ").strip()
-cuisine = input("Kueche: ").strip()
+cuisine = input("Küche: ").strip()
 
 query = {}
 
@@ -21,5 +21,5 @@ for restaurant in results:
     print()
     print(f"ID: {restaurant['_id']}")
     print(f"Name: {restaurant.get('name')}")
-    print(f"Kueche: {restaurant.get('cuisine')}")
+    print(f"Küche: {restaurant.get('cuisine')}")
     print(f"Bezirk: {restaurant.get('borough')}")

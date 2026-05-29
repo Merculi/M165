@@ -1,0 +1,40 @@
+Kapitel 5 - Zusatzaufgabe
+
+5.1 Auf welchem Port läuft der MongoDB-Server?
+
+Ein MongoDB-Server läuft standardmässig auf Port 27017.
+
+Wenn in der Konfiguration nichts anderes eingestellt wurde, kann die lokale Verbindung deshalb so aufgebaut werden:
+mongodb://localhost:27017/
+
+
+5.2 Starte einen MongoDB-Server in einem Container.
+Der MongoDB-Server soll auf dem Port 55555 laufen.
+Wie lautet der dafür erforderliche Befehl?
+
+Der erforderliche Docker-Befehl lautet:
+
+docker run --name mongodb-m165 -d -p 55555:27017 mongo:latest
+
+Erklärung:
+- docker run startet einen neuen Container.
+- --name mongodb-m165 gibt dem Container einen eindeutigen Namen.
+- -d startet den Container im Hintergrund.
+- -p 55555:27017 verbindet den lokalen Port 55555 mit dem MongoDB-Port 27017 im Container.
+- mongo:latest verwendet das offizielle MongoDB-Image.
+
+Da der Befehl nur eine Zeile lang ist, steht er direkt in dieser Textdatei und nicht in einer separaten Scriptdatei.
+
+
+5.3 Via Shell soll eine Verbindung mit dem MongoDB-Server im Container hergestellt werden.
+Wie lautet der dafür erforderliche Befehl?
+
+Der erforderliche Befehl lautet:
+
+mongosh "mongodb://localhost:55555/"
+
+Erklärung:
+MongoDB läuft im Container weiterhin intern auf Port 27017.
+Durch das Docker-Port-Mapping ist der Server vom Host aus aber über localhost:55555 erreichbar.
+
+Da der Befehl nur eine Zeile lang ist, steht er direkt in dieser Textdatei und nicht in einer separaten Scriptdatei.
